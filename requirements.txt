@@ -1,0 +1,29 @@
+
+pdfminer.six 
+PyPDF2 
+
+
+pandas
+numpy
+opencv-python
+
+pdf2image
+Pillow
+pinecone-client
+ # import if using Pinecone
+pytesseract
+redis # import if using Redis
+reportlab
+sentence-transformers
+tqdm
+openai
+pdf2image
+PyPDF2
+pytesseract
+transformers
+sentence_transformers
+pandas
+faiss-cpu
+tqdm
+pickle5
+langchain
