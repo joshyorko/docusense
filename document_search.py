@@ -6,7 +6,7 @@ import torch
 import json
 
 class DocumentSearcher:
-    def __init__(self, model_name='all-MiniLM-L6-v2', api_key='f6ff4ba3-0003-4171-a3f5-8504143e990f', 
+    def __init__(self, model_name='all-MiniLM-L6-v2', api_key='', 
                  environment='northamerica-northeast1-gcp', index_name='document-search'):
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
         self.model = SentenceTransformer(model_name, device=self.device)

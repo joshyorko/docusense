@@ -7,8 +7,9 @@ from sentence_transformers import SentenceTransformer
 import pinecone
 import io
 
+
 class DocumentEmbedder:
-    def __init__(self, model_name='all-MiniLM-L6-v2', api_key='f6ff4ba3-0003-4171-a3f5-8504143e990f', 
+    def __init__(self, model_name='all-MiniLM-L6-v2', api_key='', 
                  environment='northamerica-northeast1-gcp', index_name="document-search", 
                  tesseract_cmd='/usr/bin/tesseract'):
         pinecone.init(api_key=api_key, environment=environment)
@@ -24,6 +25,9 @@ class DocumentEmbedder:
                 shards=1
             )
         self.index = pinecone.Index(index_name=self.index_name)
+
+        # Initialize the S3 client
+       
 
     def get_info(self, pdf_file):
         try:
@@ -48,6 +52,8 @@ class DocumentEmbedder:
             print(f"Failed to extract text: {e}")
             text = ""
         return text
+
+
 
     def process_pdf(self, pdf_file):
         info = self.get_info(pdf_file)

@@ -1,12 +1,17 @@
 import base64
 import streamlit as st
 import pandas as pd
-from documentsearch import DocumentSearcher
-from documentembedder import DocumentEmbedder
+from document_search import DocumentSearcher
+from document_embedder import DocumentEmbedder
 
 # Initialize the DocumentEmbedder and DocumentSearcher
 embedder = DocumentEmbedder()
 searcher = DocumentSearcher()
+
+def show_pdf(file):
+    base64_pdf = base64.b64encode(file.read()).decode('utf-8')
+    pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="800" height="800" type="application/pdf"></iframe>'
+    st.markdown(pdf_display, unsafe_allow_html=True)
 
 st.title('Document Search Engine')
 
@@ -15,6 +20,8 @@ uploaded_files = st.file_uploader("Choose a file", type=["pdf"], accept_multiple
 if uploaded_files:
     with st.spinner('Processing and embedding uploaded files...'):
         embedder.embed_documents(uploaded_files)
+    for uploaded_file in uploaded_files:
+        show_pdf(uploaded_file)
 
 # Search Query
 query = st.text_input("Enter your search query")

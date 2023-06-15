@@ -11,7 +11,7 @@ import pinecone
 
 
 # Initialize Pinecone
-pinecone.init(api_key='f6ff4ba3-0003-4171-a3f5-8504143e990f', environment='northamerica-northeast1-gcp')
+pinecone.init(api_key='', environment='northamerica-northeast1-gcp')
 # Define your Pinecone index name 
 pinecone_index_name = "document-search"
 
